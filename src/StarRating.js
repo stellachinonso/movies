@@ -1,3 +1,4 @@
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import { useState } from "react";
 
 const containerStyle = {
@@ -14,12 +15,14 @@ export default function StarRating({
   maxRating = 5,
   color = "yellow",
   size = 48,
+  onSetRating,
 }) {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
 
   function handleRating(rating) {
     setRating(rating);
+    onSetRating(rating);
   }
 
   const textStyle = {
